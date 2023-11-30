@@ -357,16 +357,3 @@ fsdp_model = FSDP(model, sharding_strategy=ShardingStrategy.FULL_SHARD)
 # Training loop is similar to DDP, but the model is now an instance of FSDP
 ```
 
-### Full Detailed Code Explanation
-
-In a full implementation:
-
-1. **Setup**: You would include code to parse arguments or read from a configuration file to determine which mode to run (single GPU, DDP, FSDP).
-2. **Data Loading**: Your dataset should be properly formatted and preprocessed for use with a `DataLoader`.
-3. **Model Definition**: You need a concrete model definition that you wish to train. The sample linear model is just a placeholder.
-4. **DDP Initialization**: For DDP, each process should know its rank and the world size (total number of processes). This is often done by parsing command-line arguments.
-5. **FSDP Initialization**: FSDP requires additional setup, like gradient clipping and memory management strategies, for full functionality.
-6. **Training Loop**: The actual training loop doesn't change much across different modes, but the setup and teardown do.
-7. **Evaluation**: After each epoch, you'd evaluate the model on a validation set, which is not shown here.
-8. **Checkpoints**: You'd save checkpoints after certain intervals or conditions.
-9. **Logging**: Throughout the training process, you'd log necessary metrics for monitoring.
